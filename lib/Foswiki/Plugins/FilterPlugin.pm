@@ -58,10 +58,10 @@ sub commonTagsHandler {
   my $theTopic = $_[1];
   my $theWeb = $_[2];
 
-  while($_[0] =~ s/%STARTSUBST{(?!.*%STARTSUBST)(.*?)}%(.*?)%STOPSUBST%/&handleFilterArea($1, 1, $2, $theWeb, $theTopic)/ges) {
+  while($_[0] =~ s/%STARTSUBST\{(?!.*%STARTSUBST)(.*?)\}%(.*?)%STOPSUBST%/&handleFilterArea($1, 1, $2, $theWeb, $theTopic)/ges) {
     # nop
   }
-  while($_[0] =~ s/%STARTEXTRACT{(?!.*%STARTEXTRACT)(.*?)}%(.*?)%STOPEXTRACT%/&handleFilterArea($1, 0, $2, $theWeb, $theTopic)/ges) {
+  while($_[0] =~ s/%STARTEXTRACT\{(?!.*%STARTEXTRACT)(.*?)\}%(.*?)%STOPEXTRACT%/&handleFilterArea($1, 0, $2, $theWeb, $theTopic)/ges) {
     # nop
   }
 }
