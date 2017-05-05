@@ -533,6 +533,7 @@ sub handleFormatList {
   my $theTokenize = $params->{tokenize};
   my $theHideEmpty = Foswiki::Func::isTrue($params->{hideempty}, 1);
   my $theReplace = $params->{replace};
+  my $theExpansion = $params->{expandVariables} || 0;
 
   $theLimit = -1 unless defined $theLimit;
   $theFormat = '$1' unless defined $theFormat;
@@ -695,6 +696,9 @@ sub handleFormatList {
   $result =~ s/\$count/$hits/g;
 
   expandVariables($result);
+  if ( $theExpansion ) {
+      $result = Foswiki::Func::expandCommonVariables($result);
+  }
   return $result;
 }
 
